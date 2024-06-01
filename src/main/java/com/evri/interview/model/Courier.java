@@ -6,7 +6,9 @@ import lombok.Data;
 @Data
 @Builder
 public class Courier {
+
     long id;
     String name;
     boolean active;
+
 }
