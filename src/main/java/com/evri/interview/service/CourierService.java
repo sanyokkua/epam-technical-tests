@@ -1,11 +1,15 @@
 package com.evri.interview.service;
 
+import com.evri.interview.exceptions.CourierIsNotFound;
 import com.evri.interview.model.Courier;
+import com.evri.interview.model.CourierUpdate;
+import com.evri.interview.repository.CourierEntity;
 import com.evri.interview.repository.CourierRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +30,22 @@ public class CourierService {
                          .stream()
                          .map(courierTransformer::toCourier)
                          .collect(Collectors.toList());
+    }
+
+    public Courier updateCourier(Long courierId, CourierUpdate updatedCourier) {
+        Optional<CourierEntity> entity = repository.findById(courierId);
+        if (!entity.isPresent()) {
+            throw new CourierIsNotFound("Courier not found for provided id " + courierId);
+        }
+
+        CourierEntity existingCourier = entity.get();
+        existingCourier.setFirstName(updatedCourier.getFirstName());
+        existingCourier.setLastName(updatedCourier.getLastName());
+        existingCourier.setActive(updatedCourier.isActive());
+
+        CourierEntity updated = repository.save(existingCourier);
+
+        return courierTransformer.toCourier(updated);
     }
 
 }
