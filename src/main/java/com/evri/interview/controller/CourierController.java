@@ -3,11 +3,11 @@ package com.evri.interview.controller;
 import com.evri.interview.model.Courier;
 import com.evri.interview.model.CourierUpdate;
 import com.evri.interview.service.CourierService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
