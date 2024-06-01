@@ -13,9 +13,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Global error handler for handling exceptions thrown by controllers.
+ */
 @ControllerAdvice
 public class GlobalErrorHandler {
 
+    /**
+     * Handles generic exceptions and returns an appropriate HTTP response.
+     *
+     * @param ex      The exception being handled.
+     * @param request The current web request.
+     * @return A ResponseEntity containing the error response.
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex, WebRequest request) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -31,6 +41,13 @@ public class GlobalErrorHandler {
         return new ResponseEntity<>(response, status);
     }
 
+    /**
+     * Handles MethodArgumentNotValidException exceptions thrown during validation and returns an appropriate HTTP response.
+     *
+     * @param ex      The MethodArgumentNotValidException being handled.
+     * @param request The current web request.
+     * @return A ResponseEntity containing the error response.
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidationExceptions(
             MethodArgumentNotValidException ex,

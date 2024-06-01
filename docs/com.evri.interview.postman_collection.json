@@ -1,0 +1,228 @@
+{
+    "info": {
+        "_postman_id": "0d291534-63e6-4fe4-bfdf-a4452404b68e",
+        "name": "com.evri.interview",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "168476"
+    },
+    "item": [
+        {
+            "name": "getAllCouriers",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/api/couriers",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers isActive=true",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/api/couriers?isActive=true",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers"
+                    ],
+                    "query": [
+                        {
+                            "key": "isActive",
+                            "value": "true"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers isActive=false",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/api/couriers?isActive=false",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers"
+                    ],
+                    "query": [
+                        {
+                            "key": "isActive",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers Update id=1",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"firstName\": \"Kowalski\",\n    \"lastName\": \"Penguin\",\n    \"active\": false\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:8080/api/couriers/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers Check After Update",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/api/couriers",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers Update id=666",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"firstName\": \"Skipper\",\n    \"lastName\": \"Penguin\",\n    \"active\": true\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:8080/api/couriers/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "666"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers FAIL isActive=INCORRECT",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/api/couriers?isActive=INCORRECT",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers"
+                    ],
+                    "query": [
+                        {
+                            "key": "isActive",
+                            "value": "INCORRECT"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getAllCouriers FAIL update",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"lastName\": \"\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:8080/api/couriers/:id",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "couriers",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

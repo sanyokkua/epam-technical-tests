@@ -9,9 +9,19 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 
+/**
+ * Global exception handler for CourierIsNotFound exceptions.
+ */
 @ControllerAdvice
 public class CourierIsNotFoundHandler {
 
+    /**
+     * Handles CourierIsNotFound exceptions and returns an appropriate HTTP response.
+     *
+     * @param ex      The CourierIsNotFound exception.
+     * @param request The current web request.
+     * @return A ResponseEntity containing the error response.
+     */
     @ExceptionHandler(CourierIsNotFound.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(CourierIsNotFound ex, WebRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;

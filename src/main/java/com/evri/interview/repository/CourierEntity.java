@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Entity class representing a Courier stored in the database.
+ */
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -15,17 +18,26 @@ import javax.persistence.*;
 @Table(name = "couriers")
 public class CourierEntity {
 
+    /**
+     * The unique identifier for the courier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
-
+    /**
+     * The first name of the courier.
+     */
     @Column(name = "FST_NME")
     private String firstName;
-
+    /**
+     * The last name of the courier.
+     */
     @Column(name = "LST_NME")
     private String lastName;
-
+    /**
+     * Indicates whether the courier is active or not.
+     */
     @Column(name = "ACTV")
     private boolean active;
 
