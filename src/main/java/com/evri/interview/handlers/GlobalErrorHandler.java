@@ -10,7 +10,6 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -52,22 +51,22 @@ public class GlobalErrorHandler {
     public ResponseEntity<ErrorResponse> handleValidationExceptions(
             MethodArgumentNotValidException ex,
             WebRequest request) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        var status = HttpStatus.BAD_REQUEST;
 
-        Map<String, String> errors = new HashMap<>();
+        var errors = new HashMap<String, String>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
+            var fieldName = ((FieldError) error).getField();
+            var errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        String message = errors.entrySet().stream()
+        var message = errors.entrySet().stream()
                                .map(entry -> String.format("Field '%s', Error: %s",
                                                            entry.getKey(),
                                                            entry.getValue()
                                                           ))
                                .collect(Collectors.joining(";"));
 
-        ErrorResponse response = ErrorResponse.builder()
+        var response = ErrorResponse.builder()
                                               .timestamp(LocalDateTime.now().toString())
                                               .status(status.value())
                                               .error(ex.getClass().getSimpleName())

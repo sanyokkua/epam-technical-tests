@@ -24,9 +24,9 @@ public class CourierIsNotFoundHandler {
      */
     @ExceptionHandler(CourierIsNotFound.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(CourierIsNotFound ex, WebRequest request) {
-        HttpStatus status = HttpStatus.NOT_FOUND;
+        var status = HttpStatus.NOT_FOUND;
 
-        ErrorResponse response = ErrorResponse.builder()
+        var response = ErrorResponse.builder()
                                               .timestamp(LocalDateTime.now().toString())
                                               .status(status.value())
                                               .error(ex.getClass().getSimpleName())
