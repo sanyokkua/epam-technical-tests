@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class CourierController {
     @PutMapping("/couriers/{courierId}")
     public ResponseEntity<Courier> updateCourier(
             @PathVariable Long courierId,
-            @RequestBody CourierUpdate updatedCourier) {
+            @RequestBody @Valid CourierUpdate updatedCourier) {
 
         Courier updated = courierService.updateCourier(courierId, updatedCourier);
         return ResponseEntity.ok(updated);
